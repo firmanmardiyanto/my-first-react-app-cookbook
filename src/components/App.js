@@ -1,5 +1,6 @@
 import React from "react";
-import Home from "./Home/Home";
+//import Home from "./Home/Home";
+import Todo from "./Todo/Todo";
 import Header from "../shared/components/layout/Header";
 import "./App.css";
 import Content from "../shared/components/layout/Content";
@@ -10,7 +11,8 @@ function App() {
     <div className="App">
       <Header title="Welcome to Codejobs" />
       <Content>
-        <Home />
+        {/*<Home />*/}
+        <Todo />
       </Content>
       <Footer />
     </div>
