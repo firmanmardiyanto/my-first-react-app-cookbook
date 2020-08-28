@@ -1,6 +1,7 @@
 import React from "react";
 //import Home from "./Home/Home";
-import Todo from "./Todo/Todo";
+//import Todo from "./Todo/Todo";
+import Timer from "./Pomodoro/Timer";
 import Header from "../shared/components/layout/Header";
 import "./App.css";
 import Content from "../shared/components/layout/Content";
@@ -9,10 +10,10 @@ import Footer from "../shared/components/layout/Footer";
 function App() {
   return (
     <div className="App">
-      <Header title="Todo List" />
+      <Header title="Timer" />
       <Content>
         {/*<Home />*/}
-        <Todo />
+        <Timer />
       </Content>
       <Footer />
     </div>
