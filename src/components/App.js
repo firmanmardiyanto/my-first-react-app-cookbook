@@ -9,7 +9,7 @@ import Footer from "../shared/components/layout/Footer";
 function App() {
   return (
     <div className="App">
-      <Header title="Welcome to Codejobs" />
+      <Header title="Todo List" />
       <Content>
         {/*<Home />*/}
         <Todo />
