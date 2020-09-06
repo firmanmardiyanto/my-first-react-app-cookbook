@@ -1,15 +1,15 @@
 import React from 'react';
-import Animation from './Animation/Animation';
+import Numbers from './Numbers/Numbers';
 import Header from '../shared/components/layout/Header';
-import './App.css';
 import Content from '../shared/components/layout/Content';
 import Footer from '../shared/components/layout/Footer';
+import './App.css';
 
 const App = () => (
   <div className="App">
-    <Header title="Animation" />
+    <Header title="Understanding Pure Components" />
     <Content>
-      <Animation />
+      <Numbers />
     </Content>
     <Footer />
   </div>
