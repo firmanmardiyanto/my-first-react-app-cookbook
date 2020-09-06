@@ -1,28 +1,28 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./components/App";
-import * as serviceWorker from "./serviceWorker";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './components/App';
+import * as serviceWorker from './serviceWorker';
 
-const unmountBotton = document.getElementById("unmount");
+const unmountBotton = document.getElementById('unmount');
 
 function unmount() {
-  ReactDOM.unmountComponentAtNode(document.getElementById("root"));
+  ReactDOM.unmountComponentAtNode(document.getElementById('root'));
 
-  document.getElementById("unmountMessage").style.display = "block";
+  document.getElementById('unmountMessage').style.display = 'block';
 
   unmountBotton.remove();
 }
 
-unmountBotton.addEventListener("click", unmount);
+unmountBotton.addEventListener('click', unmount);
 
-document.getElementById("unmountMessage").style.display = "none";
+document.getElementById('unmountMessage').style.display = 'none';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

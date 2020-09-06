@@ -1,43 +1,53 @@
-import React, { Component } from "react";
-//import Home from "./Home/Home";
-//import Todo from "./Todo/Todo";
-//import Timer from "./Pomodoro/Timer";
-//import Coins from "./Coins/Coins";
-import Notes from "./Notes/Notes";
-import Header from "../shared/components/layout/Header";
-import "./App.css";
-import Content from "../shared/components/layout/Content";
-import Footer from "../shared/components/layout/Footer";
-
-import { notes1, notes2 } from "./Notes/Data";
+import React, { Component } from 'react';
+import Chart from './Chart/Chart';
+import Header from '../shared/components/layout/Header';
+import Content from '../shared/components/layout/Content';
+import Footer from '../shared/components/layout/Footer';
+import './App.css';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
     this.state = {
-      notes: notes1,
+      chartType: 'line',
     };
+
+    this.columns = [
+      ['BTC', 3000, 6000, 10000, 15000, 13000, 11000],
+      ['ETH', 2000, 3000, 5000, 4000, 3000, 940],
+      ['XRP', 100, 200, 300, 500, 400, 300],
+    ];
   }
 
-  componentDidMount() {
-    // setelah 10 detik catatan ditambah dengan notes2
-    setTimeout(() => {
-      this.setState({
-        notes: [...this.state.notes, ...notes2],
-      });
-    }, 10000);
+  setBarChart = () => {
+    this.setState({
+      chartType: 'bar',
+    });
+  }
+
+  setLineChart = () => {
+    this.setState({
+      chartType: 'line',
+    });
   }
 
   render() {
+    const { chartType } = this.state;
     return (
       <div className="App">
-        <Header title="Notes" />
+        <Header title="Charts" />
         <Content>
-          <Notes notes={this.state.notes}/>
+          <Chart columns={this.columns} chartType={chartType} />
+          <p>
+            Chart Type
+            <button type="button" onClick={this.setBarChart}>Bar</button>
+            <button type="button" onClick={this.setLineChart}>Line</button>
+          </p>
         </Content>
-        <Footer/>
+        <Footer />
       </div>
-    )
+    );
   }
 }
 

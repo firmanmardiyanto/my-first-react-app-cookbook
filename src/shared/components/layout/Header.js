@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import logo from "../../images/logo.svg";
+import React from 'react';
+import PropTypes from 'prop-types';
+import logo from '../../images/logo.svg';
 
 // Ditulis dengan simple arrow function
 const Header = (props) => {
-  const { title = "Welcome to React", url = "http://localhost:3000" } = props;
+  const { title = 'Welcome to React', url = 'http://localhost:3000' } = props;
 
   return (
     <header className="App-header">
@@ -20,6 +20,10 @@ const Header = (props) => {
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string,
+};
+
+Header.defaultProps = {
+  url: 'http://localhost:3000',
 };
 
 export default Header;

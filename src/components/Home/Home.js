@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import "./Home.css";
+import React, { Component } from 'react';
+import './Home.css';
 
 export default class Home extends Component {
   constructor() {
     super();
     this.state = {
-      name: "Firman Mardiyanto",
+      name: 'Firman Mardiyanto',
     };
   }
 
   componentDidMount() {
     setTimeout(() => {
-      this.setState({ name: "Mardiyanto Firman" });
+      this.setState({ name: 'Mardiyanto Firman' });
     }, 1000);
   }
 
@@ -19,7 +19,10 @@ export default class Home extends Component {
     console.log(this.state.name);
     return (
       <div className="Home">
-        <p>Hi my name is {this.state.name}</p>
+        <p>
+          Hi my name is
+          {this.state.name}
+        </p>
       </div>
     );
   }
