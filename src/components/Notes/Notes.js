@@ -39,6 +39,12 @@ class Notes extends Component {
       </div>
     );
   }
+
+  componentWillUnmount() {
+    console.log("Componentnya unmount");
+    document.body.style = "background: black";
+    document.getElementById("unmountMessage").style.color = "white";
+  }
 }
 
 export default Notes;

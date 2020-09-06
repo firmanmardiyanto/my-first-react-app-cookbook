@@ -4,6 +4,20 @@ import "./index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 
+const unmountBotton = document.getElementById("unmount");
+
+function unmount() {
+  ReactDOM.unmountComponentAtNode(document.getElementById("root"));
+
+  document.getElementById("unmountMessage").style.display = "block";
+
+  unmountBotton.remove();
+}
+
+unmountBotton.addEventListener("click", unmount);
+
+document.getElementById("unmountMessage").style.display = "none";
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
