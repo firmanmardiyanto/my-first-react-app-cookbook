@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
@@ -18,7 +19,7 @@ const response = [
     title: 'My blog post 3...',
     content: `
       <p>
-      <img onmouseover="alert('This site is no secure');" src="attack.jpg />
+      <img onmouseover="alert('This site is no secure');" src="attack.jpg" />
       </p>
       `,
   },
@@ -35,7 +36,10 @@ class Xss extends Component {
         {posts.map((post, key) => (
           <div key={key}>
             <h2>{post.title}</h2>
+            <p><strong>Secure Code:</strong></p>
             <p>{post.content}</p>
+            <p><strong>Insecure Code:</strong></p>
+            <p dangerouslySetInnerHTML={{ __html: post.content }} />
           </div>
         ))}
       </div>
