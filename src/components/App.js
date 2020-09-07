@@ -1,5 +1,5 @@
 import React from 'react';
-import Calculator from './Calculator/Calculator';
+import Person from './Person/Person';
 import Header from '../shared/components/layout/Header';
 import Content from '../shared/components/layout/Content';
 import Footer from '../shared/components/layout/Footer';
@@ -7,9 +7,9 @@ import './App.css';
 
 const App = () => (
   <div className="App">
-    <Header title="Understanding Pure Components" />
+    <Header title="React Cookbook" />
     <Content>
-      <Calculator />
+      <Person />
     </Content>
     <Footer />
   </div>

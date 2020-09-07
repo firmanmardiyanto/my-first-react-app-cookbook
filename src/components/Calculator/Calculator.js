@@ -10,16 +10,19 @@ class Calculator extends Component {
       number2: 0,
       result: 0,
     };
+    // Change to arrow function
+    // this.handleOnchange = this.handleOnchange.bind(this);
+    // this.handleResult = this.handleResult.bind(this);
   }
 
-  handleOnchange(e) {
+  handleOnchange = (e) => {
     const { target: { value, name } } = e;
     this.setState({
       [name]: Number(value),
     });
   }
 
-  handleResult(e) {
+  handleResult = (e) => {
     this.setState({
       result: this.state.number1 + this.state.number2,
     });
