@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable react/no-danger */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prefer-stateless-function */
@@ -27,6 +28,18 @@ const response = [
 
 const initialState = JSON.stringify(response);
 
+const removeXSSAttacks = (html) => {
+  const SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/sript>)<[^<]*)*<\/script>/gi;
+
+  while (SCRIPT_REGEX.test(html)) {
+    html = html.replace(SCRIPT_REGEX, '');
+  }
+
+  html = html.replace(/ on\w+="[^"]*"/g, '');
+
+  return html;
+};
+
 class Xss extends Component {
   render() {
     const posts = JSON.parse(initialState);
@@ -39,7 +52,7 @@ class Xss extends Component {
             <p><strong>Secure Code:</strong></p>
             <p>{post.content}</p>
             <p><strong>Insecure Code:</strong></p>
-            <p dangerouslySetInnerHTML={{ __html: post.content }} />
+            <p dangerouslySetInnerHTML={{ __html: removeXSSAttacks(post.content) }} />
           </div>
         ))}
       </div>
