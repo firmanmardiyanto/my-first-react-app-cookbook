@@ -1,8 +1,10 @@
+/* eslint-disable no-console */
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/no-danger */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import serialize from 'serialize-javascript';
 
 const response = [
   {
@@ -26,7 +28,8 @@ const response = [
   },
 ];
 
-const initialState = JSON.stringify(response);
+const initialState = serialize(response);
+console.log(initialState);
 
 const removeXSSAttacks = (html) => {
   const SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/sript>)<[^<]*)*<\/script>/gi;
