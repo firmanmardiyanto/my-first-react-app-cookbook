@@ -1,5 +1,5 @@
 import React from 'react';
-import Numbers from './Numbers/Numbers';
+import Xss from './Xss/Xss';
 import Header from '../shared/components/layout/Header';
 import Content from '../shared/components/layout/Content';
 import Footer from '../shared/components/layout/Footer';
@@ -9,7 +9,7 @@ const App = () => (
   <div className="App">
     <Header title="Understanding Pure Components" />
     <Content>
-      <Numbers />
+      <Xss />
     </Content>
     <Footer />
   </div>
