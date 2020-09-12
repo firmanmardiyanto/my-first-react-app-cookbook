@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Popup from 'react-popup';
 import './Person.css';
 
 class Person extends Component {
@@ -37,6 +38,41 @@ class Person extends Component {
         },
       });
 
+      if (firstName !== '' && lastName !== '' && email !== '') {
+        Popup.create({
+          title: 'Person Information',
+          content: (
+            <div>
+              <p>
+                <strong>Name:</strong>
+                {' '}
+                {firstName}
+                {' '}
+                {lastName}
+              </p>
+              <p>
+                <strong>Email:</strong>
+                {' '}
+                {email}
+              </p>
+              {phone && (
+              <p>
+                <strong>Phone:</strong>
+                {' '}
+                {phone}
+              </p>
+              )}
+            </div>
+          ),
+          buttons: {
+            right: [{
+              text: 'Close',
+              action: (popup) => popup.close(),
+            }],
+          },
+        });
+      }
+
       const data = {
         firstName,
         lastName,
@@ -48,6 +84,9 @@ class Person extends Component {
     }
 
     render() {
+      const {
+        firstName, lastName, email, phone, errors
+      } = this.state;
       return (
         <div className="Person">
           <form onSubmit={this.handleSubmit}>
@@ -57,11 +96,11 @@ class Person extends Component {
                 <input
                   name="firstName"
                   type="text"
-                  value={this.state.firstName}
+                  value={firstName}
                   onChange={this.handleChange}
-                  className={this.state.errors.firstName ? 'error' : ''}
+                  className={errors.firstName ? 'error' : ''}
                 />
-                {this.state.errors.firstName && (<div className="errorMessage">Required field</div>)}
+                {errors.firstName && (<div className="errorMessage">Required field</div>)}
               </p>
             </div>
             <div>
@@ -70,23 +109,23 @@ class Person extends Component {
                 <input
                   name="lastName"
                   type="text"
-                  value={this.state.lastName}
+                  value={lastName}
                   onChange={this.handleChange}
-                  className={this.state.errors.lastName ? 'error' : ''}
+                  className={errors.lastName ? 'error' : ''}
                 />
-                {this.state.errors.lastName && (<div className="errorMessage">Required field</div>)}
+                {errors.lastName && (<div className="errorMessage">Required field</div>)}
               </p>
             </div>
             <div>
               <p><strong>Email:</strong></p>
-              <p><input name="email" type="email" value={this.state.email} onChange={this.handleChange} /></p>
+              <p><input name="email" type="email" value={email} onChange={this.handleChange} /></p>
             </div>
             <div>
               <p><strong>Phone:</strong></p>
-              <p><input name="phone" type="tel" value={this.state.phone} onChange={this.handleChange} /></p>
+              <p><input name="phone" type="tel" value={phone} onChange={this.handleChange} /></p>
             </div>
             <p>
-              <button>Save Information</button>
+              <button type="submit">Save Information</button>
             </p>
           </form>
         </div>
