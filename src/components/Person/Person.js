@@ -10,6 +10,10 @@ class Person extends Component {
       lastName: '',
       email: '',
       phone: '',
+      errors: {
+        firstName: false,
+        lastName: false,
+      },
     };
   }
 
@@ -25,6 +29,14 @@ class Person extends Component {
       const {
         firstName, lastName, email, phone,
       } = this.state;
+
+      this.setState({
+        errors: {
+          firstName: firstName === '',
+          lastName: lastName === '',
+        },
+      });
+
       const data = {
         firstName,
         lastName,
@@ -41,11 +53,29 @@ class Person extends Component {
           <form onSubmit={this.handleSubmit}>
             <div>
               <p><strong>First Name:</strong></p>
-              <p><input name="firstName" type="text" value={this.state.firstName} onChange={this.handleChange} /></p>
+              <p>
+                <input
+                  name="firstName"
+                  type="text"
+                  value={this.state.firstName}
+                  onChange={this.handleChange}
+                  className={this.state.errors.firstName ? 'error' : ''}
+                />
+                {this.state.errors.firstName && (<div className="errorMessage">Required field</div>)}
+              </p>
             </div>
             <div>
               <p><strong>Last Name:</strong></p>
-              <p><input name="lastName" type="text" value={this.state.lastName} onChange={this.handleChange} /></p>
+              <p>
+                <input
+                  name="lastName"
+                  type="text"
+                  value={this.state.lastName}
+                  onChange={this.handleChange}
+                  className={this.state.errors.lastName ? 'error' : ''}
+                />
+                {this.state.errors.lastName && (<div className="errorMessage">Required field</div>)}
+              </p>
             </div>
             <div>
               <p><strong>Email:</strong></p>
